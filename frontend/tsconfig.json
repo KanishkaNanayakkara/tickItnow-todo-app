@@ -1,6 +1,6 @@
 {
   "files": [],
-  "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }],
+  "references": [{ "path": "./tsconfig.node.json" }],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
@@ -11,6 +11,15 @@
     "skipLibCheck": true,
     "allowJs": true,
     "noUnusedLocals": false,
-    "strictNullChecks": false
-  }
+    "strictNullChecks": false,
+    "types": ["cypress", "node"]
+  },
+  "include": [
+    "src",
+    "frontend/src",
+    "cypress",
+    "frontend/cypress",
+    "frontend/cypress/**/*.ts",
+    "frontend/cypress/**/*.tsx"
+  ]
 }

@@ -1,29 +1,11 @@
-import { useState } from "react";
+import React from "react";
 import { TaskForm } from "@/components/TaskForm";
 import { TaskCard } from "@/components/TaskCard";
 import { EmptyState } from "@/components/EmptyState";
-import { toast } from "sonner";
-import { ITask } from "@/types/common/types";
 import { useGetRecentTasks } from "@/queries/useGetRecentTasksQuery";
 
 const Index = () => {
-  const [tasks, setTasks] = useState<ITask[]>([]);
-
   const { recentTasks, isLoadingTasks, tasksError, refetchTasks } = useGetRecentTasks();
-
-  const handleEditTask = (id: number, title: string, description: string) => {
-    setTasks((prev) =>
-      prev.map((task) =>
-        task.id === id ? { ...task, title, description } : task
-      )
-    );
-    toast.success("Changes saved");
-  };
-
-  const handleCompleteTask = (id: number) => {
-    setTasks((prev) => prev.filter((task) => task.id !== id));
-    toast.success("Task completed!");
-  };
 
   return (
     <div className="min-h-screen">
@@ -76,7 +58,7 @@ const Index = () => {
               </h2>
               <div className="h-0.5 lg:h-1 flex-1 rounded-full bg-gradient-to-l from-primary via-secondary to-accent"></div>
             </div>
-            
+
             {recentTasks.length === 0 ? (
               <EmptyState />
             ) : (
