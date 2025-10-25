@@ -15,7 +15,7 @@ import com.tickitnow.todo.model.Task;
 import com.tickitnow.todo.service.TaskService;
 
 @RestController
-@RequestMapping("/api/tasks")
+@RequestMapping("/tasks")
 public class TaskController {
     private final TaskService taskService;
 
