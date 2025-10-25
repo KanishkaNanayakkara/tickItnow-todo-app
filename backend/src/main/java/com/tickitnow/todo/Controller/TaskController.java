@@ -28,6 +28,11 @@ public class TaskController {
         return taskService.createTask(task);
     }
 
+    @GetMapping("/{id}")
+    public Task getById(@PathVariable Long id) {
+        return taskService.getTaskById(id);
+    }
+
     @GetMapping
     public List<Task> getRecent() {
         return taskService.getRecentTasks();
@@ -42,5 +47,4 @@ public class TaskController {
     public Task update(@PathVariable Long id, @RequestBody Task updatedTask) {
         return taskService.updateTask(id, updatedTask.getTitle(), updatedTask.getDescription());
     }
-    
 }
