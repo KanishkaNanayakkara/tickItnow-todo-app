@@ -2,8 +2,12 @@ import { ITask } from "@/types/common/types";
 import axios from "axios";
 
 export const fetchRecentTasks = async (): Promise<ITask[]> => {
-  const { data } = await axios.get('/tasks');
-  return data;
+  try {
+    const { data } = await axios.get('/tasks');
+    return data;
+  } catch (error) {
+    throw new Error("Failed to fetch tasks");
+  }
 };
 
 export const addTask = async (title: string, description: string): Promise<ITask> => {
