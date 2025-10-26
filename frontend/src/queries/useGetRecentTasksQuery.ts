@@ -12,6 +12,9 @@ export const useGetRecentTasks = () => {
   } = useQuery<ITask[], Error>({
     queryKey: ["recentTasks"],
     queryFn: () => fetchRecentTasks(),
+    retry: 1,
+    retryDelay: 1000,
+    throwOnError: false,
   });
 
   return {

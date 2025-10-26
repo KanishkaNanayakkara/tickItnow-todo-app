@@ -8,13 +8,15 @@ import { completeTask, updateTask } from "@/service/apiService";
 import { ITask } from "@/types/common/types";
 import { toast } from "sonner";
 import { QueryObserverResult, RefetchOptions } from "@tanstack/react-query";
+import Loader from "./Loader";
 
 interface TaskCardProps {
   task: ITask;
   refetchTasks: (options?: RefetchOptions) => Promise<QueryObserverResult<ITask[], Error>>;
+  isLoading?: boolean;
 }
 
-export const TaskCard = ({ task, refetchTasks }: TaskCardProps) => {
+export const TaskCard = ({ task, refetchTasks, isLoading }: TaskCardProps) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editTitle, setEditTitle] = useState(task.title);
   const [editDescription, setEditDescription] = useState(task.description);
@@ -45,7 +47,6 @@ export const TaskCard = ({ task, refetchTasks }: TaskCardProps) => {
       refetchTasks();
       toast.success("Task completed!");
     } catch (error) {
-      console.error("Error completing task:", error);
       toast.error("Failed to mark task as complete. Please try again.");
     } finally {
       setIsCompleting(false);
@@ -53,51 +54,91 @@ export const TaskCard = ({ task, refetchTasks }: TaskCardProps) => {
   };
 
   return (
+    <div className="relative">
     <Card 
       className={`p-3 lg:p-4 shadow-card hover:shadow-card-hover transition-all duration-300 border-l-4 border-l-primary/50 hover:border-l-primary bg-gradient-to-br from-card to-card/30 backdrop-blur ${
         isCompleting ? "animate-fade-out" : "animate-fade-in"
       }`}
     >
       {isEditing ? (
-        <>
+        <div className="space-y-3">
           <Input
+            type="text"
             value={editTitle}
             onChange={(e) => setEditTitle(e.target.value)}
-            placeholder="Task title"
+            className="font-semibold text-sm lg:text-base"
+            autoFocus
           />
           <Textarea
             value={editDescription}
             onChange={(e) => setEditDescription(e.target.value)}
             placeholder="Task description"
+            className="min-h-[60px] lg:min-h-[70px] resize-none text-sm lg:text-base"
           />
           <div className="flex gap-2">
-            <Button onClick={handleSave} variant="default">
+            <Button 
+              onClick={handleSave} 
+              size="sm" 
+              className="flex-1"
+            >
+              <Check className="w-4 h-4 mr-1" />
               Save
             </Button>
-            <Button onClick={handleCancel} variant="secondary">
+            <Button 
+              onClick={handleCancel} 
+              size="sm" 
+              variant="outline"
+              className="flex-1"
+            >
+              <X className="w-4 h-4 mr-1" />
               Cancel
             </Button>
           </div>
-        </>
+        </div>
       ) : (
-        <>
-          <h3 className="font-semibold text-lg">{task.title}</h3>
-          <p className="text-gray-600">{task.description}</p>
+        <div className="space-y-3">
+          <div>
+            <h3 className="font-semibold text-base lg:text-lg text-card-foreground mb-1.5">
+              {task.title}
+            </h3>
+            {task.description && (
+              <p className="text-muted-foreground text-xs lg:text-sm leading-relaxed line-clamp-2">
+                {task.description}
+              </p>
+            )}
+          </div>
+          
           <div className="flex gap-2">
-            <Button onClick={() => setIsEditing(true)} variant="outline">
-              <Pencil size={16} /> Edit
+            <Button
+              onClick={() => setIsEditing(true)}
+              size="sm"
+              variant="outline"
+              className="flex-shrink-0 hover:border-primary hover:text-primary transition-colors"
+            >
+              <Pencil className="w-4 h-4 mr-1" />
+              Edit
             </Button>
             <Button
               onClick={handleComplete}
+              size="sm"
               disabled={isCompleting}
-              variant="default"
-              className="flex-1 gradient-accent hover:opacity-90 transition-opacity font-semibold shadow-md"
+              className="flex-1 gradient-hero hover:opacity-90 transition-opacity font-semibold shadow-md"
             >
-              <Check size={16} /> Complete
+              Complete
             </Button>
           </div>
-        </>
+        </div>
       )}
     </Card>
+    {isLoading && (
+    <div
+      className="absolute inset-0 z-20 flex items-center justify-center rounded-lg bg-white/60 dark:bg-black/40"
+      aria-hidden={false}
+      aria-busy="true"
+    >
+      <Loader size="lg" text="Adding task..." />
+    </div>
+  )}
+    </div>
   );
 };
