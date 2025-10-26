@@ -131,7 +131,7 @@ All application components (**Frontend**, **Backend**, **Database**) are **conta
 ```bash
 git clone https://github.com/<your-username>/<your-repo-name>.git
 cd <your-repo-name>
-docker-compose up --build
+./start.sh
 ```
 
 Access the application:  
@@ -165,7 +165,7 @@ Create a `.env` file in the project root:
 
 ```env
 # Frontend
-VITE_API_BASE_URL=http://localhost:8080/api
+VITE_API_BASE_URL=http://localhost:8080
 ```
 
 Replace placeholder values with actual credentials as needed.
