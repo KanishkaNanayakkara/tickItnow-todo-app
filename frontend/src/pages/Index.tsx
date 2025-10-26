@@ -3,8 +3,8 @@ import { EmptyState } from "@/components/EmptyState";
 import { TaskCard } from "@/components/TaskCard";
 import { TaskForm } from "@/components/TaskForm";
 import { useGetRecentTasks } from "@/queries/useGetRecentTasksQuery";
-import { ErrorFallback } from "@/components/ErrorFallback";
-import Loader from "@/components/Loader";
+import { ErrorFallback } from "@/components/ui/ErrorFallback";
+import Loader from "@/components/ui/Loader";
 
 const Index = () => {
   const { recentTasks = [], isLoadingTasks, tasksError, refetchTasks } = useGetRecentTasks();

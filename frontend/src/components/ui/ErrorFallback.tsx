@@ -7,10 +7,10 @@ interface ErrorFallbackProps {
   showRetry?: boolean;
 }
 
-export const ErrorFallback: React.FC<ErrorFallbackProps> = ({ 
-  error, 
+export const ErrorFallback: React.FC<ErrorFallbackProps> = ({
+  error,
   onRetry,
-  showRetry = true 
+  showRetry = true
 }) => {
   return (
     <div className="flex flex-col items-center justify-center p-8 text-center">
