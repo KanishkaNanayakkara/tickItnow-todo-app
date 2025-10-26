@@ -12,9 +12,9 @@ export class TasksPage {
   }
 
   createTask(title: string, description: string) {
-    cy.get('[data-testid="task-title-input"]').type(title);
-    cy.get('[data-testid="task-description-input"]').type(description);
-    cy.contains("button", "Add Task").click();
+    cy.get('.lg\\:hidden > .rounded-lg > .space-y-4 > :nth-child(1) > [data-testid="task-title-input"]').scrollIntoView().type(title);
+    cy.get('.lg\\:hidden > .rounded-lg > .space-y-4 > :nth-child(2) > [data-testid="task-description-input"]').scrollIntoView().type(description);
+    cy.get('.lg\\:hidden > .rounded-lg > .space-y-4 > [data-testid="submit-task-button"]').scrollIntoView().click();
   }
 
   getToastMessage() {
@@ -35,7 +35,7 @@ export class TasksPage {
     this.getTaskCard(title).within(() => {
       cy.contains("button", "Edit").click();
     });
-    cy.get('input[placeholder="Task title"]').clear().type(newTitle);
+    cy.get('.lg\\:hidden > .rounded-lg > .space-y-4 > :nth-child(1) > [data-testid="task-title-input"]').scrollIntoView().clear().type(newTitle);
     cy.get('textarea[placeholder="Task description"]').clear().type(newDesc);
     cy.contains("button", "Save").click();
   }
@@ -44,7 +44,7 @@ export class TasksPage {
     this.getTaskCard(title).within(() => {
       cy.contains("button", "Edit").click();
     });
-    cy.get('input[placeholder="Task title"]').clear().type(tempTitle);
+    cy.get('.lg\\:hidden > .rounded-lg > .space-y-4 > :nth-child(1) > [data-testid="task-title-input"]').clear().type(tempTitle);
     cy.contains("button", "Cancel").click();
   }
 }

@@ -61,7 +61,7 @@ export const TaskForm = ({ refetchTasks }: TaskFormProps) => {
           <Input
             id="title"
             data-testid="task-title-input"
-            placeholder="Enter task title..."
+            placeholder="Task title"
             value={title}
             onChange={(e) => {
               setTitle(e.target.value);
