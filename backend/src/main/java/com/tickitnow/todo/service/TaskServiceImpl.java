@@ -44,5 +44,11 @@ public class TaskServiceImpl implements TaskService{
             return taskRepository.save(t);
         }).orElseThrow(() -> new RuntimeException("Task not found"));
     }
+
+    @Override
+    public Task getTaskById(Long id) {
+        return taskRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Task not found"));
+    }
     
 }
