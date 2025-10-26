@@ -1,7 +1,7 @@
 import React from "react";
-import { TaskForm } from "@/components/TaskForm";
-import { TaskCard } from "@/components/TaskCard";
 import { EmptyState } from "@/components/EmptyState";
+import { TaskCard } from "@/components/TaskCard";
+import { TaskForm } from "@/components/TaskForm";
 import { useGetRecentTasks } from "@/queries/useGetRecentTasksQuery";
 
 const Index = () => {
