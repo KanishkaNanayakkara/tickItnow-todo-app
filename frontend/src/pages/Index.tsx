@@ -54,7 +54,7 @@ const Index = () => {
             <div className="flex items-center gap-2 lg:gap-3 mb-4 lg:mb-6">
               <div className="h-0.5 lg:h-1 flex-1 rounded-full bg-gradient-to-r from-primary via-secondary to-accent"></div>
               <h2 className="text-lg lg:text-xl font-semibold text-foreground whitespace-nowrap">
-                Recent Tasks
+                Next Up
               </h2>
               <div className="h-0.5 lg:h-1 flex-1 rounded-full bg-gradient-to-l from-primary via-secondary to-accent"></div>
             </div>
