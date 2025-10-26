@@ -13,7 +13,7 @@ interface TaskFormProps {
   refetchTasks: (options?: RefetchOptions) => Promise<QueryObserverResult<ITask[], Error>>;
 }
 
-export const TaskForm = ({refetchTasks}: TaskFormProps) => {
+export const TaskForm = ({ refetchTasks }: TaskFormProps) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
@@ -36,7 +36,7 @@ export const TaskForm = ({refetchTasks}: TaskFormProps) => {
     } else {
       setErrors({ title: "", description: "" });
     }
-    
+
     if (hasErrors) return;
 
     try {
@@ -60,7 +60,8 @@ export const TaskForm = ({refetchTasks}: TaskFormProps) => {
         <div className="space-y-2">
           <Input
             id="title"
-            placeholder="Enter task title..."
+            data-testid="task-title-input"
+            placeholder="Task title"
             value={title}
             onChange={(e) => {
               setTitle(e.target.value);
@@ -77,6 +78,7 @@ export const TaskForm = ({refetchTasks}: TaskFormProps) => {
         <div className="space-y-2">
           <Textarea
             id="description"
+            data-testid="task-description-input"
             placeholder="Add details about your task..."
             value={description}
             onChange={(e) => {
@@ -91,7 +93,12 @@ export const TaskForm = ({refetchTasks}: TaskFormProps) => {
             <p className="text-sm text-red-500">{errors.description}</p>
           )}
         </div>
-        <Button type="submit" disabled={loading} className="w-full gradient-primary hover:opacity-90 transition-opacity shadow-glow font-semibold text-base h-12">
+        <Button
+          type="submit"
+          disabled={loading}
+          className="w-full gradient-primary hover:opacity-90 transition-opacity shadow-glow font-semibold text-base h-12"
+          data-testid="submit-task-button"
+        >
           <svg
             className="w-5 h-5 mr-2"
             fill="none"
