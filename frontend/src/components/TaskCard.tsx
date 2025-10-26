@@ -8,7 +8,7 @@ import { completeTask, updateTask } from "@/service/apiService";
 import { ITask } from "@/types/common/types";
 import { toast } from "sonner";
 import { QueryObserverResult, RefetchOptions } from "@tanstack/react-query";
-import Loader from "./Loader";
+import Loader from "./ui/Loader";
 
 interface TaskCardProps {
   task: ITask;

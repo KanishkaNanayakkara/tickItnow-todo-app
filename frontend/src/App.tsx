@@ -8,7 +8,8 @@ import NotFound from "./pages/NotFound";
 import axios from "axios";
 
 const queryClient = new QueryClient();
-axios.defaults.baseURL = 'http://localhost:8080';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
+axios.defaults.baseURL = API_BASE_URL;
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
