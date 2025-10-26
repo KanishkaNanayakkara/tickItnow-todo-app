@@ -8,6 +8,8 @@ public interface TaskService {
     
     Task createTask(Task task);
 
+    Task getTaskById(Long id);
+
     List<Task> getRecentTasks();
 
     void completeTask(Long id);
