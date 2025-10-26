@@ -41,6 +41,7 @@ export const TaskForm = ({refetchTasks}: TaskFormProps) => {
       <form onSubmit={handleSubmit} className="space-y-4">
         <Input
           id="title"
+          data-testid="task-title-input"
           placeholder="Enter task title..."
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -48,11 +49,12 @@ export const TaskForm = ({refetchTasks}: TaskFormProps) => {
         />
         <Textarea
           id="description"
+          data-testid="task-description-input"
           placeholder="Add details about your task..."
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <Button type="submit" disabled={loading} className="w-full gradient-primary hover:opacity-90 transition-opacity shadow-glow font-semibold text-base h-12">
+        <Button type="submit" disabled={loading} className="w-full gradient-primary hover:opacity-90 transition-opacity shadow-glow font-semibold text-base h-12" data-testid="submit-task-button">
           <svg
             className="w-5 h-5 mr-2"
             fill="none"
