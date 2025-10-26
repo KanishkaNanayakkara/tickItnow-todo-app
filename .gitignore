@@ -37,6 +37,7 @@ node_modules/
 # Build output
 build/
 dist/
+target/
 
 # Logs
 npm-debug.log*
