@@ -21,7 +21,6 @@ export const TaskForm = ({refetchTasks}: TaskFormProps) => {
     title: "",
     description: ""
   });
-  console.log(errors);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
