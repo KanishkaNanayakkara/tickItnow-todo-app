@@ -47,6 +47,42 @@ services:
     networks:
       - app-network
 
+  #  Backend Test Service
+  backend-test:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: tester
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  #  Frontend Unit Test Service
+  frontend-test:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: tester
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  #  Cypress E2E Test Service
+  e2e-test:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: e2e
+    depends_on:
+      - frontend
+    environment:
+      - CYPRESS_BASE_URL=http://frontend:3000
+    networks:
+      - app-network
+
 networks:
   app-network:
     driver: bridge

@@ -191,40 +191,74 @@ POST /api/tasks
 
 ## 🧪 Testing
 
-> * The application build and run processes are fully containerized (no Java or Node required).
-> * Unit and integration tests are available for both frontend and backend.
-> * Tests can be executed locally.
+The application’s entire testing process is **fully containerized** — no need to install **Node.js, Java, or Maven** locally.
+All tests (backend, frontend, and end-to-end) can be executed either **natively** or **inside Docker**.
+
+---
 
 ### ✅ Backend Unit & Integration Tests
-- **Frameworks:** JUnit , Mockito  
-- **Integration Testing:** H2 in-memory database simulates PostgreSQL  
 
-**Run tests:**
+* **Frameworks:** JUnit, Mockito
+* **Integration Testing:** Uses **H2 in-memory database** to simulate PostgreSQL
+* **Purpose:** Validates business logic, service layers, and API endpoints
+
+**Run tests locally:**
+
 ```bash
 cd backend
 ./mvnw test
 ```
 
+**Run tests in Docker:**
+
+```bash
+docker compose run backend-test
+```
+
 ---
 
 ### 🧩 Frontend Unit & Component Tests
-- **Framework:** Vitest + React Testing Library  
-- **Scope:** Tests UI components and business logic  
 
-**Run tests:**
+* **Framework:** Vitest + React Testing Library
+* **Scope:** Tests UI components, hooks, and business logic
+
+**Run tests locally:**
+
 ```bash
 cd frontend
 npm test
 ```
 
+**Run tests in Docker:**
+
+```bash
+docker compose run frontend-test
+```
+
 ---
 
-### 🌐 End-to-End Tests (Cypress)
+### 🌐 End-to-End (E2E) Tests
+
+* **Framework:** Cypress
+* **Scope:** Simulates real user interactions to ensure frontend-backend integration
+
+**Run tests locally:**
+
 ```bash
 cd frontend
 npx cypress open   # Interactive mode
 # or
 npx cypress run    # Headless mode
+```
+
+**Run tests in Docker:**
+
+```bash
+# 1. Bring up the stack (frontend, backend, and database)
+docker compose up -d frontend backend postgres
+
+# 2. Run Cypress tests
+docker compose run e2e-test
 ```
 
 ---
