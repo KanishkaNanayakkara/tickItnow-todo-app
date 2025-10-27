@@ -254,3 +254,7 @@ npx cypress run    # Headless mode
 - Error State
 
 <img width="1862" height="885" alt="image" src="https://github.com/user-attachments/assets/82b92794-eb94-4dc3-a85a-07eeafa4b6a7" />
+
+- Responsive UIs
+<img width="939" height="836" alt="image" src="https://github.com/user-attachments/assets/1a1dde8e-d461-4f9f-ab13-a8271030a6a7" />
+
