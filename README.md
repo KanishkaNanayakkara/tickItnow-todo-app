@@ -113,7 +113,16 @@ All application components (**Frontend**, **Backend**, **Database**) are **conta
 ├── README.md
 └── .env
 ```
+---
 
+## 🔐 Environment Variables
+
+Create a `.env` file in the frontend following the sample .env file:
+
+```env
+# Frontend
+VITE_API_BASE_URL=http://localhost:8080
+```
 ---
 
 ## 🚀 Setup Instructions
@@ -157,18 +166,6 @@ npm install
 npm run dev
 ```
 
----
-
-## 🔐 Environment Variables
-
-Create a `.env` file in the project root:
-
-```env
-# Frontend
-VITE_API_BASE_URL=http://localhost:8080
-```
-
-Replace placeholder values with actual credentials as needed.
 
 ---
 
@@ -194,8 +191,12 @@ POST /api/tasks
 
 ## 🧪 Testing
 
+> * The application build and run processes are fully containerized (no Java or Node required).
+> * Unit and integration tests are available for both frontend and backend.
+> * Tests can be executed locally.
+
 ### ✅ Backend Unit & Integration Tests
-- **Frameworks:** JUnit 5, Mockito  
+- **Frameworks:** JUnit , Mockito  
 - **Integration Testing:** H2 in-memory database simulates PostgreSQL  
 
 **Run tests:**
@@ -229,7 +230,27 @@ npx cypress run    # Headless mode
 ---
 
 ## 🖼️ Screenshots
-*(Add screenshots or GIFs after running the app — e.g., task creation, task list view, editing tasks, etc.)*  
-- Create Task  
-- Task List  
+
+- Initial View
+
+<img width="1863" height="858" alt="image" src="https://github.com/user-attachments/assets/670130d1-a1af-430d-996e-7bb78f020100" />
+
+- Create Task
+  
+<img width="1886" height="897" alt="image" src="https://github.com/user-attachments/assets/e3e1e3ce-9253-4156-a875-f786301612c1" />
+
 - Edit Task
+  
+<img width="1876" height="869" alt="image" src="https://github.com/user-attachments/assets/a98c6ffc-475f-4957-be99-886a39281bbf" />
+
+- Task List
+
+<img width="1884" height="904" alt="image" src="https://github.com/user-attachments/assets/e4dfbbe5-60dc-49c1-b3a3-1ab90784781e" />
+
+- Loading State
+  
+<img width="1657" height="878" alt="image" src="https://github.com/user-attachments/assets/255fdaad-97a1-4490-a49e-feab825e0519" />
+
+- Error State
+
+<img width="1862" height="885" alt="image" src="https://github.com/user-attachments/assets/82b92794-eb94-4dc3-a85a-07eeafa4b6a7" />
